@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Backend service for the project."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=5.2.8",
+    "loguru>=0.7.3",
+    "psycopg>=3.2.13",
+    "pydantic>=2.12.4",
+    "pydantic-settings[yaml]>=2.12.0",
+    "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+    "pytest-django>=4.11.1",
+    "rich>=14.2.0",
+    "typer>=0.20.0",
+    "zxcvbn>=4.5.0",
+]
+
+[project.scripts]
+devtools = "devtools.cli:main"
+
+[tool.uv]
+package = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["config", "devtools"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.6",
+]
